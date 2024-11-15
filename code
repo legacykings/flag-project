@@ -1,0 +1,64 @@
+import pygame
+
+pygame.init()
+
+screen_width, screen_height = 1000, 600
+screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption("Great Britain Poster")
+
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+green = (0, 255, 0)
+
+mexico_flag = pygame.image.load('flag.jpg')
+mexico_flag = pygame.transform.scale(mexico_flag, (200, 120))
+
+horchata_image = pygame.image.load('horchata.jpg')
+
+temple_image = pygame.image.load('temple.jpg')
+temlpe_image = pygame.transform.scale(temple_image, (200, 200))
+
+oscar_image = pygame.image.load('oscar-de-la-hoya.jpg')
+oscar_image = pygame.transform.scale(oscar_image, (200, 200))
+
+font_title = pygame.font.Font(None, 70)
+font_subtitle = pygame.font.Font(None, 40)
+font_text = pygame.font.Font(None, 30)
+
+title_text = font_title.render("Welcome to the wonderful land of Mexico", True, green)
+subtitle_text = font_subtitle.render("Famous for its rich history and culture", True, green)
+fact1 = font_text.render("Mexico City known for its incredible cuisine, famous landmarks,", True, WHITE)
+fact2 = font_text.render("and cultural contributions. It has been home to iconic", True, WHITE)
+fact3 = font_text.render("figures like Oscar De La Hoya, and traditions like", True, WHITE)
+fact4 = font_text.render("drinking horchata with family and boxing. Mexico City,", True, WHITE)
+fact5 = font_text.render("the capital, is a vibrant mix of history and modernity,", True, WHITE)
+fact6 = font_text.render("traveling not to far to see sights such as the Temple Chichén Itzá .", True, WHITE)
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    screen.fill((50, 50, 50))
+
+    pygame.draw.rect(screen, RED, [50, 100, 900, 5])
+    pygame.draw.rect(screen, RED, [50, 500, 900, 5])
+
+    screen.blit(title_text, (screen_width // 2 - title_text.get_width() // 2, 20))
+    screen.blit(subtitle_text, (350, 150))
+    screen.blit(fact1, (350, 200))
+    screen.blit(fact2, (350, 230))
+    screen.blit(fact3, (350, 260))
+    screen.blit(fact4, (350, 290))
+    screen.blit(fact5, (350, 320))
+    screen.blit(fact6, (350, 350))
+
+    screen.blit(mexico_flag, (100, 150))
+    screen.blit(horchata_image, (50, 350))
+    screen.blit(temple_image, (420, 450))
+    screen.blit(oscar_image, (720, 450))
+
+    pygame.display.flip()
+
+pygame.quit()
